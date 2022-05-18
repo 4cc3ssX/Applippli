@@ -30,7 +30,7 @@ import {
 } from '../../redux/features/population/populationSlice';
 import {LineChart} from 'react-native-chart-kit';
 import {nFormatter} from '../../utils/utils';
-import {Dimensions} from 'react-native';
+import {Dimensions, RefreshControl} from 'react-native';
 import _ from 'lodash';
 
 const Home = () => {
@@ -39,7 +39,7 @@ const Home = () => {
   const {width} = Dimensions.get('window');
   const dispatch = useDispatch<any>();
   const {showToast} = useContext(ToastContext);
-  const {areas, times, population} = useSelector<RootState>(
+  const {areas, status, times, population} = useSelector<RootState>(
     s => s.population,
   ) as IPopulationState;
   const [value, setValue] = useState('00000');
@@ -123,12 +123,14 @@ const Home = () => {
   );
 
   const getPopulation = useCallback(() => {
-    dispatch(
-      fetchPopulation({
-        areaCode: value,
-        ...time,
-      }),
-    );
+    if (value || (time.cdTimeFrom && time.cdTimeTo)) {
+      dispatch(
+        fetchPopulation({
+          areaCode: value,
+          ...time,
+        }),
+      );
+    }
   }, [dispatch, time, value]);
 
   useEffect(() => {
@@ -202,7 +204,16 @@ const Home = () => {
           </Pressable>
         )}
       />
-      <ScrollView px={8} py={3} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        px={8}
+        py={3}
+        refreshControl={
+          <RefreshControl
+            refreshing={status === 'loading'}
+            onRefresh={() => getPopulation()}
+          />
+        }
+        showsVerticalScrollIndicator={false}>
         <VStack alignItems="center">
           <DropDownPicker
             open={isOpened}
