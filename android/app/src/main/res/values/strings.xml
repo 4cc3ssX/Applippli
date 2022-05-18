@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Applippli</string>
+    
+    <string name="facebook_app_id">2373601376122968</string>
+    <string name="fb_login_protocol_scheme">fb2373601376122968</string>
+    <string name="facebook_client_token">7ae54700d97a1130b13cf8fddb845b43</string>
+</resources>

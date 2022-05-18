@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "202628239211",
+    "project_id": "applippli",
+    "storage_bucket": "applippli.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202628239211:android:dc3bbe0ad7cc5112ec462e",
+        "android_client_info": {
+          "package_name": "com.applippli.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "202628239211-0srlbe9r3ugctqbnqabk5pre12fbovbk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAgSFbauhxjqhOsIfTZQ2yVrT1q7Fm8pU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "202628239211-0srlbe9r3ugctqbnqabk5pre12fbovbk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "202628239211-os2jeig7hl9u239q058964lf7lmjejhg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.applippli.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
