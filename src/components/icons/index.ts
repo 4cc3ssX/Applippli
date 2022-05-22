@@ -1,5 +1,7 @@
 import FacebookLogo from './FacebookLogo';
 import GoogleLogo from './GoogleLogo';
+import ChevronBack from './ChevronBack';
+import ChevronForward from './ChevronForward';
 
 export interface IIconProps {
   size?: number;
@@ -8,4 +10,4 @@ export interface IIconProps {
   color?: string;
 }
 
-export {GoogleLogo, FacebookLogo};
+export {GoogleLogo, FacebookLogo, ChevronForward, ChevronBack};

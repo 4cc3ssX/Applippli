@@ -10,7 +10,7 @@ const Container = (props: IContainer) => {
   return (
     <SafeAreaView
       style={[styles.container, {backgroundColor: theme.colors.white}]}>
-      <Box flex={1} bg="#fff" {...props} />
+      <Box flex={1} bg="#fff" _dark={{bg: '#2F334D'}} {...props} />
     </SafeAreaView>
   );
 };

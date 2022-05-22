@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 export function getCommaDelimit(x: number): string {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 export function nFormatter(number: string | number): {

@@ -9,6 +9,7 @@ import {
   useToast,
   IBoxProps,
   ITextProps,
+  useColorMode,
 } from 'native-base';
 import React from 'react';
 import {StatusBar, useColorScheme} from 'react-native';
@@ -25,7 +26,8 @@ enableScreens();
 const NBApp = () => {
   const toast = useToast();
   const theme = useTheme();
-  const isDarkMode = useColorScheme() === 'dark';
+  const {colorMode} = useColorMode();
+  const isDarkMode = useColorScheme() === 'dark' || colorMode === 'dark';
   const showToast = React.useCallback(
     ({
       message,
@@ -60,7 +62,7 @@ const NBApp = () => {
     <ToastContext.Provider value={{showToast}}>
       <NavigationContainer>
         <StatusBar
-          backgroundColor={theme.colors.white}
+          backgroundColor={isDarkMode ? '#292E4E' : theme.colors.white}
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         />
         <Stack />

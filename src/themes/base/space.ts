@@ -1,5 +1,5 @@
 export const spacing = {
-  'px': '1px',
+  px: '1px',
   '0': 0,
   '0.5': 2,
   '1': 4,
@@ -42,7 +42,7 @@ export const spacing = {
   '3/6': '50%',
   '4/6': '66.666%',
   '5/6': '83.333%',
-  'full': '100%',
+  full: '100%',
 };
 
 export type ISpacing = keyof typeof spacing;

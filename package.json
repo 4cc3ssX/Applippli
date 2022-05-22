@@ -38,6 +38,7 @@
     "react-native-shadow-2": "^6.0.5",
     "react-native-splash-screen": "^3.3.0",
     "react-native-svg": "^12.3.0",
+    "react-native-switch": "^1.5.1",
     "react-native-vector-icons": "^9.1.0",
     "react-native-version": "^4.0.0",
     "react-native-webview": "^11.18.2",

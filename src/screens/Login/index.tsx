@@ -10,14 +10,14 @@ import {
   Input,
   Pressable,
   Text,
+  useColorMode,
   useTheme,
   VStack,
 } from 'native-base';
 import React, {useContext, useEffect, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {FacebookLogo, GoogleLogo} from '../../components/icons';
-import {Container} from '../../components/interface';
-import Divider from '../../components/interface/Divider';
+import {Container, Divider} from '../../components/interface';
 import {DeviceInfo, ToastContext} from '../../utils';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {useNavigation} from '@react-navigation/native';
@@ -33,6 +33,7 @@ GoogleSignin.configure({
 const Login = () => {
   const theme = useTheme();
   const {showToast} = useContext(ToastContext);
+  const {colorMode} = useColorMode();
   const navigation = useNavigation<any>();
   const [show, setShow] = useState(false);
   const [isLoading, setLoading] = useState<boolean>(false);
@@ -117,7 +118,10 @@ const Login = () => {
         </Heading>
       </VStack>
       <Box mt={3} mb={12}>
-        <Text fontWeight="medium" color="primary.400">
+        <Text
+          fontWeight="medium"
+          color="primary.400"
+          _dark={{color: 'primary.200'}}>
           Log In to your account and explore with us!
         </Text>
       </Box>
@@ -125,36 +129,50 @@ const Login = () => {
         <VStack space={5}>
           <Input
             variant="unstyled"
-            bg="gray.50"
+            bg={colorMode === 'dark' ? '#292E4E' : 'gray.50'}
             rounded="full"
             type="text"
             py="2.5"
+            placeholderTextColor={
+              colorMode === 'dark'
+                ? theme.colors.text[200]
+                : theme.colors.text[700]
+            }
             InputLeftElement={
               <Icon
                 as={<Ionicons name="at" />}
                 size={5}
                 ml="5"
-                color="gray.600"
+                color={
+                  colorMode === 'dark' ? theme.colors.text[50] : 'gray.600'
+                }
                 onPress={() => setShow(!show)}
               />
             }
             _focus={{
-              bg: theme.colors.gray['100'],
+              bg: colorMode === 'dark' ? '#292E4E' : theme.colors.gray['100'],
             }}
             placeholder="What's your email address?"
           />
           <Input
             variant="unstyled"
-            bg="gray.50"
+            bg={colorMode === 'dark' ? '#292E4E' : 'gray.50'}
             rounded="full"
             py="2.5"
+            placeholderTextColor={
+              colorMode === 'dark'
+                ? theme.colors.text[200]
+                : theme.colors.text[700]
+            }
             type={show ? 'text' : 'password'}
             InputLeftElement={
               <Icon
                 as={<Ionicons name="key" />}
                 size={5}
                 ml="5"
-                color="gray.600"
+                color={
+                  colorMode === 'dark' ? theme.colors.text[50] : 'gray.600'
+                }
                 onPress={() => setShow(!show)}
               />
             }
@@ -163,12 +181,14 @@ const Login = () => {
                 as={<Ionicons name={show ? 'eye' : 'eye-off'} />}
                 size={5}
                 mr="5"
-                color="muted.400"
+                color={
+                  colorMode === 'dark' ? theme.colors.text[50] : 'gray.600'
+                }
                 onPress={() => setShow(!show)}
               />
             }
             _focus={{
-              bg: theme.colors.gray['100'],
+              bg: colorMode === 'dark' ? '#292E4E' : theme.colors.gray['100'],
             }}
             placeholder="Password"
           />
@@ -184,12 +204,16 @@ const Login = () => {
       </VStack>
       <VStack justifyContent="center" alignItems="center" my={6}>
         <Pressable onPress={() => {}}>
-          <Text color="primary.400" underline>
+          <Text color="primary.400" _dark={{color: 'primary.200'}} underline>
             Forgot your password?
           </Text>
         </Pressable>
       </VStack>
-      <Divider containerProps={{my: 8, mx: 10}} label="or" />
+      <Divider
+        dark={colorMode === 'dark'}
+        containerProps={{my: 8, mx: 10}}
+        label="or"
+      />
       <HStack mt={6} justifyContent="center" alignItems="center" space={6}>
         <HStack alignItems="center">
           <IconButton

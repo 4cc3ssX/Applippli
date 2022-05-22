@@ -105,9 +105,8 @@ export const populationSlice = createSlice({
       };
     });
     builder.addCase(fetchPopulation.rejected, (state, action) => {
-      const {GET_STATS_DATA} = action.payload as any;
-      const ERROR_MSG: string = GET_STATS_DATA.RESULT.ERROR_MSG;
-      return {...state, status: 'idle', error: `${ERROR_MSG}`};
+      const error = action.error.message;
+      return {...state, status: 'idle', error: `${error}`};
     });
     builder.addCase(fetchArea.pending, state => {
       state.status = 'loading';

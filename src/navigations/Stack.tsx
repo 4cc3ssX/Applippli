@@ -1,6 +1,6 @@
-import {createStackNavigator} from '@react-navigation/stack';
+import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 import React from 'react';
-import {Home, Login, Splash} from '../screens';
+import {Home, Login, Settings, Splash} from '../screens';
 
 type ScreenOptions = {
   title?: string;
@@ -19,6 +19,13 @@ const Screens: IScreen[] = [
   {
     name: 'Home',
     component: Home,
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: 'Settings',
+    component: Settings,
     options: {
       headerShown: false,
     },
@@ -43,7 +50,11 @@ const NStack = createStackNavigator();
 
 const Stack = () => {
   return (
-    <NStack.Navigator initialRouteName="Splash">
+    <NStack.Navigator
+      initialRouteName="Splash"
+      screenOptions={{
+        ...TransitionPresets.SlideFromRightIOS,
+      }}>
       {Screens.map((e, i) => {
         return <NStack.Screen key={i.toString()} {...e} />;
       })}

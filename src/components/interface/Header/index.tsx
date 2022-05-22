@@ -14,6 +14,7 @@ interface IHeader {
   rightElement?: () => React.ReactNode;
   onBackPress?: () => void;
   canGoBack?: boolean;
+  dark?: boolean;
 }
 
 const Header = (props: IHeader) => {
@@ -28,12 +29,13 @@ const Header = (props: IHeader) => {
     safeArea = false,
     onBackPress = navigation.goBack,
     canGoBack = true,
+    dark,
   } = props;
   return (
     <HStack
       justifyContent="space-around"
       alignItems="center"
-      bgColor="white"
+      bg={dark ? '#292E4E' : 'white'}
       pt={safeArea ? insets.top + 14 : 14}
       pb={3.5}
       px={4}
@@ -41,7 +43,11 @@ const Header = (props: IHeader) => {
       {!leftElement && canGoBack ? (
         <TouchableOpacity activeOpacity={0.7} onPress={onBackPress}>
           <View padding={1}>
-            <Icon name="chevron-back" size={18} />
+            <Icon
+              name="chevron-back"
+              size={18}
+              color={dark ? '#F5F5F5' : 'black'}
+            />
           </View>
         </TouchableOpacity>
       ) : (
